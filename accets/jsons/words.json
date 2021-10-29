@@ -1,0 +1,34 @@
+[
+  {
+    "words": {
+      "1": {
+        "eng": "Hello",
+        "deu": "Hallo"
+      },
+      "2": {
+        "eng": "Good day",
+        "deu": "Guten Tag"
+      },
+      "3": {
+        "eng": "Good night",
+        "deu": "Gute Nacht"
+      },
+      "4": {
+        "eng": "Shop",
+        "deu": "Geschäft"
+      },
+      "5": {
+        "eng": "School",
+        "deu": "Schule"
+      },
+      "6": {
+        "eng": "University",
+        "deu": "Universität"
+      },
+      "7": {
+        "eng": "Table",
+        "deu": "Tabelle"
+      }
+    }
+  }
+]

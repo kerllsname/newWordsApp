@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@900&display=swap');
+
+main {
+  max-width: 1920px;
+  margin   : 400px auto;
+}
+
+.words-section {
+  max-width  : 500px;
+  margin     : 0 auto;
+  font-family: 'Zen Kaku Gothic Antique', sans-serif;
+  font-size  : 40px;
+  text-align: center;
+}
+
+.eng-word {
+  width: 100%;
+  height: 100%;
+}
+
+.deu-word {
+  width: 100%;
+  height: 100%;
+}
+
+.renew-icon {
+  margin: 20px;
+  cursor: pointer;
+}
