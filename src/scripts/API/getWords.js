@@ -1,54 +1,45 @@
 export default function getWords() {
-  const btn = document.querySelector('.renew-icon');
+  const btn = document.querySelector(".renew-icon");
 
-  startWords();
+  changeWords({ random: true });
 
-  btn.addEventListener('click', changeWords)
+  btn.addEventListener("click", changeWords);
 }
 
-async function startWords() {
-  const engWord = document.querySelector('.eng-word');
-  const deuWord = document.querySelector('.deu-word');
+async function changeWords({ random = false }) {
+  const engWord = document.querySelector(".eng-word");
+  const deuWord = document.querySelector(".deu-word");
   const words = await getListWords();
-  const num = getRandomNumber();
+  let num = random
+    ? getRandomNumber()
+    : safeIncrement(localStorage.getItem("index"), [
+        1,
+        Object.keys(words).length,
+      ]);
 
-  localStorage.setItem('index', num);
+  localStorage.setItem("index", num);
 
-  engWord.innerHTML = `${words[0].words[num].eng}`;
-  deuWord.innerHTML = `${words[0].words[num].deu}`;
-}
-
-async function changeWords() {
-  const engWord = document.querySelector('.eng-word');
-  const deuWord = document.querySelector('.deu-word');
-  const words = await getListWords();
-  let num = changeIndex();
-
-  engWord.innerHTML = `${words[0].words[num].eng}`;
-  deuWord.innerHTML = `${words[0].words[num].deu}`;
+  engWord.innerHTML = `${words[num].eng}`;
+  deuWord.innerHTML = `${words[num].deu}`;
 }
 
 async function getListWords() {
-  const url = '../accets/jsons/words.json';
+  const url = "../accets/jsons/words.json";
 
-  return await fetch(url).then(response => response.json());
+  return await fetch(url)
+    .then((response) => response.json())
+    .then((data) => data[0].words);
 }
 
 function getRandomNumber() {
   let num = Math.floor(Math.random() * 7) + 1;
 
-  return num
+  return num;
 }
 
-function changeIndex() {
-  let num = localStorage.getItem('index');
-
-  if (num < 7) {
-    num++;
-    localStorage.setItem('index', num);
-    return num
-  } else {
-    localStorage.setItem('index', 1);
-    return 1
-  }
+function safeIncrement(num, [start, end]) {
+  num++;
+  console.log(start, end);
+  if (num <= end) return num;
+  else return start;
 }
